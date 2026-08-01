@@ -9,6 +9,8 @@ export const SITE = {
   locale: 'en_US',
   asOfDate: 'August 1, 2026',
   asOfISO: '2026-08-01',
+  price: 33000,
+  priceFormatted: '$33,000',
 } as const;
 
 /** Cloudflare Images CDN helpers (add image IDs here when assets are uploaded) */
@@ -24,7 +26,7 @@ export const HERO_IMAGE = '/images/hero.png';
 export const OG_IMAGE = `${SITE.url}/images/hero.png`;
 
 export const ACQUISITION_MAILTO = `mailto:${SITE.email}?subject=${encodeURIComponent(
-  'electricalagriculture.com Domain Acquisition Inquiry'
+  `electricalagriculture.com Domain Acquisition Inquiry — ${SITE.priceFormatted}`
 )}&body=${encodeURIComponent(
-  'Hello,\n\nI am interested in acquiring electricalagriculture.com.\n\nIntended use:\nBudget range:\n\nThank you.'
+  `Hello,\n\nI am interested in acquiring electricalagriculture.com at the listed price of ${SITE.priceFormatted}.\n\nIntended use:\n\nThank you.`
 )}`;
