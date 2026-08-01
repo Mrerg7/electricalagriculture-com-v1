@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-deep: #07110c;
+    --bg-field: #0b1410;
+    --bg-panel: #132419;
+    --accent-harvest: #d4a84b;
+    --accent-volt: #9bcf3a;
+    --text-primary: #f3f0e7;
+    --text-muted: #a8b5a9;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-field-900 text-[var(--text-primary)] font-sans antialiased overflow-x-hidden;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 20% -10%, rgba(212, 168, 75, 0.12), transparent 55%),
+      radial-gradient(ellipse 60% 40% at 90% 10%, rgba(155, 207, 58, 0.08), transparent 50%),
+      linear-gradient(180deg, #07110c 0%, #0b1410 40%, #0e1a13 100%);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background: rgba(212, 168, 75, 0.35);
+    color: #fff;
+  }
+}
+
+@layer components {
+  .font-display {
+    font-family: 'Fraunces', Georgia, serif;
+  }
+
+  .section-label {
+    @apply text-xs uppercase tracking-[0.28em] text-harvest-500 font-semibold;
+  }
+
+  .prose-ea p {
+    @apply text-[var(--text-muted)] leading-relaxed;
+  }
+
+  .prose-ea strong {
+    @apply text-[var(--text-primary)] font-semibold;
+  }
+
+  .reveal {
+    animation: fade-up 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .reveal-delay-1 {
+    animation-delay: 0.12s;
+  }
+
+  .reveal-delay-2 {
+    animation-delay: 0.24s;
+  }
+
+  .reveal-delay-3 {
+    animation-delay: 0.36s;
+  }
+}

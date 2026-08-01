@@ -1,0 +1,45 @@
+---
+import { getCollection } from 'astro:content';
+
+const topics = (await getCollection('topics')).sort((a, b) => a.data.order - b.data.order);
+
+const renderedTopics = await Promise.all(
+  topics.map(async (topic) => {
+    const { Content } = await topic.render();
+    return { topic, Content };
+  })
+);
+---
+
+<section id="topics" class="relative z-10 bg-field-950/40 border-y border-white/5">
+  <div class="max-w-6xl mx-auto px-5 sm:px-6 py-20 sm:py-28">
+    <div class="max-w-2xl mb-14">
+      <p class="section-label mb-4">Core topics</p>
+      <h2 class="font-display text-3xl sm:text-5xl font-semibold tracking-tight leading-[1.1]">
+        What electrical agriculture means in practice
+      </h2>
+    </div>
+
+    <div class="grid gap-10 md:grid-cols-2">
+      {
+        renderedTopics.map(({ topic, Content }, index) => (
+          <article class="group relative">
+            <div class="flex items-baseline gap-4 mb-4">
+              <span class="font-display text-harvest-500/80 text-sm tracking-widest">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <span class="text-[10px] uppercase tracking-[0.28em] text-volt-400/90">{topic.data.label}</span>
+            </div>
+            <h3 class="font-display text-2xl sm:text-3xl font-semibold tracking-tight mb-3 group-hover:text-harvest-300 transition-colors">
+              {topic.data.title}
+            </h3>
+            <p class="text-sm text-white/55 mb-5 leading-relaxed">{topic.data.summary}</p>
+            <div class="prose-ea space-y-4 text-[15px] sm:text-base border-t border-white/10 pt-5">
+              <Content />
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

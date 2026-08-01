@@ -1,0 +1,53 @@
+---
+import { ACQUISITION_MAILTO, HERO_IMAGE, SITE } from '../config/site';
+---
+
+<section class="relative min-h-[100dvh] flex items-end sm:items-center overflow-hidden">
+  <div class="absolute inset-0" aria-hidden="true">
+    <img
+      src={HERO_IMAGE}
+      alt=""
+      width="1920"
+      height="1080"
+      class="h-full w-full object-cover animate-drift scale-105"
+      fetchpriority="high"
+      decoding="async"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-field-950 via-field-950/75 to-field-950/35"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-field-950/80 via-transparent to-field-950/40"></div>
+  </div>
+
+  <div class="relative z-10 w-full max-w-6xl mx-auto px-5 sm:px-6 pt-28 pb-16 sm:pb-24">
+    <p class="section-label reveal mb-5">Electrified farming · As of {SITE.asOfDate}</p>
+
+    <h1 class="font-display reveal reveal-delay-1 text-[clamp(2.75rem,8vw,5.75rem)] font-semibold leading-[0.95] tracking-tighter2 max-w-4xl">
+      {SITE.brand}
+    </h1>
+
+    <p class="reveal reveal-delay-2 mt-6 max-w-xl text-lg sm:text-xl text-white/80 leading-relaxed">
+      The quiet shift from diesel to electrons — tractors, implements, and farm energy systems redesigned for efficiency,
+      autonomy, and lower operating cost.
+    </p>
+
+    <div class="reveal reveal-delay-3 mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4">
+      <a
+        href={ACQUISITION_MAILTO}
+        class="inline-flex items-center justify-center gap-2 rounded-full bg-harvest-500 px-7 py-3.5 text-base font-bold text-field-950 hover:bg-harvest-300 transition-colors"
+      >
+        Contact for acquisition
+        <span aria-hidden="true">→</span>
+      </a>
+      <a
+        href="#landscape"
+        class="inline-flex items-center justify-center rounded-full border border-white/25 bg-white/5 px-7 py-3.5 text-base font-medium text-white hover:bg-white/10 transition-colors"
+      >
+        Explore the landscape
+      </a>
+    </div>
+  </div>
+
+  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 hidden sm:flex flex-col items-center gap-2 text-[10px] tracking-[0.3em] uppercase text-white/45">
+    <span class="animate-pulse-soft">Scroll</span>
+    <span class="h-8 w-px bg-gradient-to-b from-harvest-500/80 to-transparent" aria-hidden="true"></span>
+  </div>
+</section>

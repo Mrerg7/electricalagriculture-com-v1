@@ -1,0 +1,36 @@
+---
+import { getCollection } from 'astro:content';
+
+const insights = (await getCollection('insights')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<section id="insights" class="relative z-10">
+  <div class="max-w-6xl mx-auto px-5 sm:px-6 py-20 sm:py-28">
+    <div class="max-w-2xl mb-14">
+      <p class="section-label mb-4">Field notes</p>
+      <h2 class="font-display text-3xl sm:text-5xl font-semibold tracking-tight leading-[1.1]">
+        Signals from the electrified farm
+      </h2>
+      <p class="mt-5 text-[var(--text-muted)] text-lg leading-relaxed">
+        Snapshot insights drawn from publicly available reporting on electrified machinery, OEM roadmaps, and market
+        outlooks.
+      </p>
+    </div>
+
+    <ul class="space-y-0 divide-y divide-white/10 border-y border-white/10">
+      {
+        insights.map((item) => (
+          <li class="py-8 sm:py-10 grid sm:grid-cols-[1fr_1.4fr] gap-4 sm:gap-10">
+            <div>
+              <h3 class="font-display text-xl sm:text-2xl font-semibold tracking-tight">{item.data.title}</h3>
+              {item.data.source && (
+                <p class="mt-2 text-xs uppercase tracking-[0.18em] text-[var(--text-muted)]">{item.data.source}</p>
+              )}
+            </div>
+            <p class="text-[var(--text-muted)] leading-relaxed text-base sm:text-lg">{item.data.summary}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,78 @@
+---
+import { ACQUISITION_MAILTO, SITE } from '../config/site';
+---
+
+<footer class="relative z-10 border-t border-white/10 bg-field-950">
+  <div class="max-w-6xl mx-auto px-5 sm:px-6 py-16 sm:py-20">
+    <!-- Sophisticated domain acquisition CTA -->
+    <div
+      class="relative overflow-hidden rounded-[1.75rem] border border-harvest-500/20 bg-gradient-to-br from-field-800 via-field-950 to-field-800 p-8 sm:p-12 mb-12"
+    >
+      <div
+        class="absolute -top-28 -right-20 h-72 w-72 rounded-full bg-harvest-500/10 blur-3xl pointer-events-none"
+        aria-hidden="true"
+      ></div>
+      <div
+        class="absolute -bottom-32 -left-16 h-72 w-72 rounded-full bg-volt-500/10 blur-3xl pointer-events-none"
+        aria-hidden="true"
+      ></div>
+
+      <div class="relative z-10 grid lg:grid-cols-[1.25fr_0.85fr] gap-10 lg:gap-14 items-center">
+        <div>
+          <p class="section-label mb-4">Domain available for acquisition</p>
+          <h2 class="font-display text-3xl sm:text-4xl font-semibold tracking-tight mb-4">
+            electricalagriculture.com — a category-defining digital asset
+          </h2>
+          <p class="text-[var(--text-muted)] max-w-xl leading-relaxed">
+            Positioned at the intersection of farm electrification, AgTech branding, and clean-power agriculture, this
+            exact-match .com is a rare strategic name. Serious buyers may inquire for pricing, transfer logistics, and
+            escrow options.
+          </p>
+        </div>
+
+        <div
+          class="rounded-2xl border border-white/10 p-6 sm:p-8"
+          style="background: rgba(7, 17, 12, 0.82); backdrop-filter: blur(20px);"
+        >
+          <p class="text-xs uppercase tracking-[0.2em] text-[var(--text-muted)] font-semibold mb-2">
+            Acquisition contact
+          </p>
+          <a
+            href={`mailto:${SITE.email}`}
+            class="block font-display text-2xl sm:text-3xl text-white hover:text-harvest-300 transition-colors break-all"
+          >
+            {SITE.email}
+          </a>
+          <a
+            href={ACQUISITION_MAILTO}
+            class="mt-6 inline-flex w-full items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-harvest-500 to-harvest-600 px-6 py-4 font-extrabold text-field-950 hover:brightness-110 transition-all"
+          >
+            <span>Inquire about acquisition</span>
+            <span aria-hidden="true">→</span>
+          </a>
+          <p class="mt-4 text-center text-[11px] tracking-wide text-[var(--text-muted)]">
+            Confidential inquiries · Response within 24 hours
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <p class="text-xs text-[var(--text-muted)] leading-relaxed max-w-4xl mb-10">
+      This website is for demonstration and informational purposes only. It does not constitute an offer of services, a
+      commitment to deploy, or a guarantee of outcomes. All statistics, projections, and references to specific
+      technologies are based on publicly available information as of {SITE.asOfDate} and are subject to change.
+    </p>
+
+    <div
+      class="pt-8 border-t border-white/10 text-xs text-[var(--text-muted)] flex flex-col md:flex-row gap-y-4 items-center justify-between"
+    >
+      <div>&copy; {new Date(SITE.asOfISO).getFullYear()} {SITE.name}. All rights reserved.</div>
+      <div class="flex items-center gap-x-5">
+        <span>Premium domain listing by owner</span>
+        <a href={`mailto:${SITE.email}`} class="underline decoration-white/20 hover:text-harvest-300 transition-colors">
+          {SITE.email}
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

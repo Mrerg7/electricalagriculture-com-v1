@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../config/site';
+---
+
+<BaseLayout title={`Page not found · ${SITE.name}`} noindex={true}>
+  <main class="min-h-[100dvh] flex items-center justify-center px-6">
+    <div class="text-center max-w-lg">
+      <p class="section-label mb-4">404</p>
+      <h1 class="font-display text-4xl sm:text-5xl font-semibold tracking-tight mb-4">Field not found</h1>
+      <p class="text-[var(--text-muted)] mb-8 leading-relaxed">
+        That path doesn’t exist on {SITE.name}. Head back to the main overview of electrical agriculture.
+      </p>
+      <a
+        href="/"
+        class="inline-flex items-center justify-center rounded-full bg-harvest-500 px-7 py-3.5 font-bold text-field-950 hover:bg-harvest-300 transition-colors"
+      >
+        Return home
+      </a>
+    </div>
+  </main>
+</BaseLayout>
