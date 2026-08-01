@@ -11,19 +11,17 @@ export const SITE = {
   asOfISO: '2026-08-01',
 } as const;
 
-/** Cloudflare Images CDN */
+/** Cloudflare Images CDN helpers (add image IDs here when assets are uploaded) */
 export const CF_IMAGES = {
   accountHash: '-sPAUAWeA405NiWJ0SNIQA',
-  /** Full-bleed field / ag machinery atmosphere */
-  heroImageId: 'bb89b413-cf32-48e6-5b0f-b05adae97900',
 } as const;
 
 export function cfImageUrl(imageId: string, variant = 'public'): string {
   return `https://imagedelivery.net/${CF_IMAGES.accountHash}/${imageId}/${variant}`;
 }
 
-export const HERO_IMAGE = cfImageUrl(CF_IMAGES.heroImageId);
-export const OG_IMAGE = cfImageUrl(CF_IMAGES.heroImageId);
+/** Local branded OG asset until a dedicated Cloudflare Image is uploaded */
+export const OG_IMAGE = `${SITE.url}/og.svg`;
 
 export const ACQUISITION_MAILTO = `mailto:${SITE.email}?subject=${encodeURIComponent(
   'electricalagriculture.com Domain Acquisition Inquiry'

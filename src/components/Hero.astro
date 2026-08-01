@@ -1,20 +1,13 @@
 ---
-import { ACQUISITION_MAILTO, HERO_IMAGE, SITE } from '../config/site';
+import { ACQUISITION_MAILTO, SITE } from '../config/site';
 ---
 
 <section class="relative min-h-[100dvh] flex items-end sm:items-center overflow-hidden">
-  <div class="absolute inset-0" aria-hidden="true">
-    <img
-      src={HERO_IMAGE}
-      alt=""
-      width="1920"
-      height="1080"
-      class="h-full w-full object-cover animate-drift scale-105"
-      fetchpriority="high"
-      decoding="async"
-    />
-    <div class="absolute inset-0 bg-gradient-to-t from-field-950 via-field-950/75 to-field-950/35"></div>
-    <div class="absolute inset-0 bg-gradient-to-r from-field-950/80 via-transparent to-field-950/40"></div>
+  <div class="absolute inset-0 hero-atmosphere" aria-hidden="true">
+    <div class="absolute inset-0 hero-grid"></div>
+    <div class="absolute -top-1/4 left-1/2 h-[70vmax] w-[70vmax] -translate-x-1/2 rounded-full bg-harvest-500/10 blur-3xl animate-drift"></div>
+    <div class="absolute bottom-0 right-0 h-[50vmax] w-[50vmax] translate-x-1/4 translate-y-1/4 rounded-full bg-volt-500/10 blur-3xl"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-field-950 via-field-950/55 to-transparent"></div>
   </div>
 
   <div class="relative z-10 w-full max-w-6xl mx-auto px-5 sm:px-6 pt-28 pb-16 sm:pb-24">
