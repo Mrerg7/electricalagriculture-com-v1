@@ -20,8 +20,8 @@ export function cfImageUrl(imageId: string, variant = 'public'): string {
   return `https://imagedelivery.net/${CF_IMAGES.accountHash}/${imageId}/${variant}`;
 }
 
-/** Local branded OG asset until a dedicated Cloudflare Image is uploaded */
-export const OG_IMAGE = `${SITE.url}/og.svg`;
+export const HERO_IMAGE = '/images/hero.png';
+export const OG_IMAGE = `${SITE.url}/images/hero.png`;
 
 export const ACQUISITION_MAILTO = `mailto:${SITE.email}?subject=${encodeURIComponent(
   'electricalagriculture.com Domain Acquisition Inquiry'
