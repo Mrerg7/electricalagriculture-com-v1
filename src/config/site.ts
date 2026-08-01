@@ -11,6 +11,7 @@ export const SITE = {
   asOfISO: '2026-08-01',
   price: 33000,
   priceFormatted: '$33,000',
+  googleSiteVerification: 'tx94Fcazdz37lQqOHmF3nJYDo8nfvkGvPQJtt6Q8hwM',
 } as const;
 
 /** Cloudflare Images CDN helpers (add image IDs here when assets are uploaded) */
