@@ -6,7 +6,7 @@ preview_urls = false
 # Fully static site — assets-only Workers Static Assets deploy (no Worker script)
 [assets]
 directory = "./dist"
-html_handling = "force-trailing-slash"
+html_handling = "auto-trailing-slash"
 not_found_handling = "404-page"
 
 [observability]
