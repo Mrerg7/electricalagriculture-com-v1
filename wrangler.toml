@@ -1,6 +1,6 @@
 name = "electricalagriculture-com-v1"
 compatibility_date = "2026-08-01"
-workers_dev = true
+workers_dev = false
 preview_urls = false
 
 # Fully static site — assets-only Workers Static Assets deploy (no Worker script)
