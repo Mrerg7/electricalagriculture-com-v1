@@ -1,15 +1,15 @@
 # electricalagriculture.com
 
-Static informational site for **electrical agriculture** — electrified farm machinery, market context, and domain acquisition.
+Static briefing and domain listing for **electrical agriculture** — food made from renewable electricity, not another cleared acre. Listed at **$33,000**.
+
+The science follows Michael Le Page, “How turning electricity directly into food could help save the planet,” *New Scientist*, 22 September 2026. This site is not affiliated with New Scientist, the researchers, or the companies named.
 
 ## Stack
 
-- [Astro](https://astro.build) static output (no adapter)
-- TypeScript + Tailwind CSS
-- Content Collections (`topics`, `insights`)
-- Cloudflare Workers Static Assets (`wrangler.toml` → `./dist`)
-- Cloudflare Images CDN (`imagedelivery.net`)
-- Sitemap + `robots.txt` + full OG / JSON-LD
+- Astro static output (no adapter) — Cloudflare Workers Static Assets, free plan
+- TypeScript
+- Sitemap + `robots.txt` + canonical tags + JSON-LD (Organization, WebSite, Product, Article, FAQPage)
+- Acquisition mail to **sales@desertrich.com**, escrow off-site, no checkout
 
 ## Develop
 
@@ -25,6 +25,8 @@ npm run build
 npx wrangler deploy
 ```
 
-Or: `npm run deploy`
+Or `npm run deploy`.
 
-Acquisition CTA routes to **sales@desertrich.com**.
+## Changelog
+
+See [CHANGELOG.md](./CHANGELOG.md).

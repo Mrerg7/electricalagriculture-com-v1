@@ -1,146 +1,184 @@
 ---
-import '../styles/global.css';
-import { SITE, OG_IMAGE, ACQUISITION_MAILTO } from '../config/site';
+import "../styles/global.css";
+import { SITE, OG_IMAGE, mailto } from "../config/site";
 
 interface Props {
   title?: string;
   description?: string;
-  ogImage?: string;
-  noindex?: boolean;
+  path?: string;
+  jsonLd?: unknown;
 }
 
 const {
   title = SITE.title,
   description = SITE.description,
-  ogImage = OG_IMAGE,
-  noindex = false,
+  path = "/",
+  jsonLd,
 } = Astro.props;
 
-const pathname = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
-const canonicalURL = new URL(pathname, SITE.url).href;
-
-const structuredData = {
-  '@context': 'https://schema.org',
-  '@graph': [
+const canonical = new URL(path, SITE.url).href;
+const graph = {
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      '@type': 'WebSite',
-      '@id': `${SITE.url}/#website`,
-      url: SITE.url,
-      name: SITE.name,
-      description,
-      inLanguage: 'en-US',
-      publisher: { '@id': `${SITE.url}/#organization` },
-    },
-    {
-      '@type': 'WebPage',
-      '@id': `${SITE.url}/#webpage`,
-      url: SITE.url,
-      name: title,
-      description,
-      isPartOf: { '@id': `${SITE.url}/#website` },
-      primaryImageOfPage: { '@id': `${SITE.url}/#primaryimage` },
-      datePublished: SITE.asOfISO,
-      dateModified: SITE.asOfISO,
-      inLanguage: 'en-US',
-    },
-    {
-      '@type': 'ImageObject',
-      '@id': `${SITE.url}/#primaryimage`,
-      url: ogImage,
-      width: 1200,
-      height: 630,
-      caption: 'Electric tractor operating in a green agricultural field',
-    },
-    {
-      '@type': 'Organization',
-      '@id': `${SITE.url}/#organization`,
+      "@type": "Organization",
       name: SITE.brand,
       url: SITE.url,
       email: SITE.email,
       logo: `${SITE.url}/favicon.svg`,
     },
     {
-      '@type': 'Product',
-      '@id': `${SITE.url}/#product`,
-      name: 'electricalagriculture.com Premium Domain Name',
-      description:
-        'Category-defining .com domain for electrical agriculture, electrified farm equipment, and AgTech electrification brands. Available for acquisition.',
+      "@type": "WebSite",
       url: SITE.url,
-      image: ogImage,
-      category: 'Premium Domain Name',
-      brand: {
-        '@type': 'Brand',
-        name: SITE.name,
-      },
+      name: SITE.name,
+      description: SITE.description,
+      inLanguage: "en-US",
+    },
+    {
+      "@type": "WebPage",
+      url: canonical,
+      name: title,
+      description,
+      isPartOf: SITE.url,
+    },
+    {
+      "@type": "Product",
+      name: "electricalagriculture.com",
+      category: "Premium domain name",
+      description:
+        "Exact-match .com for electro-agriculture — food produced from renewable electricity rather than additional farmland.",
+      url: SITE.url,
+      image: OG_IMAGE,
       offers: {
-        '@type': 'Offer',
-        url: ACQUISITION_MAILTO,
+        "@type": "Offer",
         price: String(SITE.price),
-        priceCurrency: 'USD',
-        availability: 'https://schema.org/InStock',
-        seller: {
-          '@type': 'Organization',
-          name: SITE.name,
-          email: SITE.email,
-        },
+        priceCurrency: "USD",
+        availability: "https://schema.org/InStock",
+        url: `${SITE.url}/acquire/`,
       },
     },
   ],
 };
+const nav = [
+  ["/science/", "Science"],
+  ["/makers/", "Makers"],
+  ["/notes/", "Notes"],
+  ["/faq/", "FAQ"],
+];
+const here = Astro.url.pathname;
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="generator" content={Astro.generator} />
-
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
-    <meta name="title" content={title} />
     <meta name="description" content={description} />
     <meta
       name="keywords"
-      content="electrical agriculture, electric tractors, farm electrification, electrified farm equipment, AgTech, electric farming, domain acquisition"
+      content="electricalagriculture.com for sale, buy .com domains, premium domain names, electro-agriculture, electricity into food, microbial protein"
     />
     <meta name="author" content={SITE.brand} />
-    <meta name="robots" content={noindex ? 'noindex' : 'index, follow, max-image-preview:large, max-snippet:-1'} />
-    <link rel="canonical" href={canonicalURL} />
-
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#14211b" />
+    <meta name="google-site-verification" content={SITE.googleSiteVerification} />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={SITE.name} />
-    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:url" content={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImage} />
-    <meta property="og:image:secure_url" content={ogImage} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="electricalagriculture.com — Electrified farming & Ag equipment" />
+    <meta property="og:image" content={OG_IMAGE} />
+    <meta property="og:image:width" content="1792" />
+    <meta property="og:image:height" content="1008" />
     <meta property="og:locale" content={SITE.locale} />
-
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImage} />
-    <meta name="twitter:image:alt" content="electricalagriculture.com — Electrified farming & Ag equipment" />
-
+    <meta name="twitter:image" content={OG_IMAGE} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/favicon.svg" />
-    {SITE.googleSiteVerification && (
-      <meta name="google-site-verification" content={SITE.googleSiteVerification} />
-    )}
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,620&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-
-    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    <script is:inline>
+      try {
+        var t = localStorage.getItem("ea-theme");
+        if (t === "dark" || (!t && matchMedia("(prefers-color-scheme: dark)").matches))
+          document.documentElement.classList.add("dark");
+      } catch (e) {}
+    </script>
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd ?? graph)} />
   </head>
   <body>
+    <div class="bar">
+      <div class="wrap bar-inner">
+        <p>
+          <strong>{SITE.name}</strong> is listed at <strong>{SITE.priceFormatted}</strong>
+        </p>
+        <a href="/acquire/">Acquire the domain</a>
+      </div>
+    </div>
+    <header class="nav">
+      <div class="wrap nav-inner">
+        <a class="brand" href="/">Electrical Agriculture</a>
+        <nav class="nav-links" aria-label="Primary">
+          {
+            nav.map(([href, label]) => (
+              <a href={href} aria-current={here === href ? "page" : undefined}>
+                {label}
+              </a>
+            ))
+          }
+        </nav>
+        <div style="display:flex;align-items:center;gap:0.25rem">
+          <button class="icon-btn" type="button" id="theme" aria-label="Switch theme">◐</button>
+          <a class="btn nav-cta" href="/acquire/">{SITE.priceFormatted}</a>
+          <button class="icon-btn menu-btn" type="button" id="menu" aria-expanded="false" aria-label="Open menu">☰</button>
+        </div>
+      </div>
+      <nav class="wrap mobile-nav" id="mobile" aria-label="Mobile">
+        {nav.map(([href, label]) => <a href={href}>{label}</a>)}
+        <a href="/acquire/">Acquire · {SITE.priceFormatted}</a>
+      </nav>
+    </header>
     <slot />
+    <footer class="footer">
+      <div class="wrap footer-grid">
+        <div>
+          <p class="display" style="font-size:1.8rem">Electrical Agriculture</p>
+          <p class="muted">
+            Independent briefing on food made from electricity, and the listing for {SITE.name}. Not
+            affiliated with {SITE.sourcePublisher}, the researchers, or the companies named.
+          </p>
+        </div>
+        <div>
+          <p class="kicker">Read</p>
+          {nav.map(([href, label]) => <a href={href}>{label}</a>)}
+        </div>
+        <div>
+          <p class="kicker">Domain</p>
+          <a href="/acquire/">Buy or make an offer</a>
+          <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+          <a href={mailto("buy")}>Buy now</a>
+        </div>
+      </div>
+      <p class="wrap fine">
+        Figures follow {SITE.sourceAuthor}, “{SITE.sourceTitle},” {SITE.sourcePublisher}, {SITE.sourceDate}.
+        Updated {SITE.asOfISO}.
+      </p>
+    </footer>
+    <aside class="exit hidden" id="exit">
+      <h2 style="font-size:1.5rem">Before you go</h2>
+      <p class="muted">{SITE.name} is listed once, at {SITE.priceFormatted}. No checkout — escrow, then the name.</p>
+      <div class="actions">
+        <a class="btn" href="/acquire/">See the listing</a>
+        <button class="btn-ghost" type="button" id="exit-close">Close</button>
+      </div>
+    </aside>
+    <script src="/app.js" defer></script>
   </body>
 </html>

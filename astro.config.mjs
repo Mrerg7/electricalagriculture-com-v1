@@ -15,7 +15,7 @@ export default defineConfig({
     sitemap({
       changefreq: 'monthly',
       priority: 0.9,
-      lastmod: new Date('2026-08-01'),
+      lastmod: new Date('2026-10-03'),
     }),
   ],
   image: {

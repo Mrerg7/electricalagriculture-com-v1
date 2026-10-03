@@ -1,0 +1,25 @@
+---
+import Base from "../../layouts/BaseLayout.astro";
+import { notes } from "../../data/brief";
+const title = "Notes | Electrical Agriculture";
+const description = "Essays on electro-agriculture: the 18× acetate route, Solar Foods, land given back, and fat from syngas.";
+---
+<Base title={title} description={description} path="/notes/">
+  <main class="wrap section">
+    <p class="kicker">Notes</p>
+    <div class="section-head">
+      <h1 class="display">Field notes.</h1>
+      <input class="search" data-search="#note-list" type="search" placeholder="Search the notes" aria-label="Search the notes" />
+    </div>
+    <div id="note-list">
+      {notes.map((note) => (
+        <a class="note" data-hay={`${note.title} ${note.dek} ${note.kicker} ${note.paragraphs.join(" ")}`} href={`/notes/${note.slug}/`} style="display:grid;gap:0.3rem;padding:1.2rem 0;border-bottom:1px solid var(--line);text-decoration:none">
+          <p class="kicker">{note.kicker}</p>
+          <h2 style="font-size:1.8rem">{note.title}</h2>
+          <p class="muted">{note.dek}</p>
+          <p class="muted">{note.minutes} min · {note.date}</p>
+        </a>
+      ))}
+    </div>
+  </main>
+</Base>

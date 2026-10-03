@@ -1,22 +1,14 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { SITE } from '../config/site';
+import Base from "../layouts/BaseLayout.astro";
 ---
-
-<BaseLayout title={`Page not found · ${SITE.name}`} noindex={true}>
-  <main class="min-h-[100dvh] flex items-center justify-center px-6">
-    <div class="text-center max-w-lg">
-      <p class="section-label mb-4">404</p>
-      <h1 class="font-display text-4xl sm:text-5xl font-semibold tracking-tight mb-4">Field not found</h1>
-      <p class="text-[var(--text-muted)] mb-8 leading-relaxed">
-        That path doesn’t exist on {SITE.name}. Head back to the main overview of electrical agriculture.
-      </p>
-      <a
-        href="/"
-        class="inline-flex items-center justify-center rounded-full bg-harvest-500 px-7 py-3.5 font-bold text-field-950 hover:bg-harvest-300 transition-colors"
-      >
-        Return home
-      </a>
+<Base title="Not found | Electrical Agriculture" description="That page is not on electricalagriculture.com." path="/404/">
+  <main class="wrap section">
+    <p class="kicker">404</p>
+    <h1 class="display">That page is not on the desk.</h1>
+    <p class="lede">The briefing and the domain listing are still here.</p>
+    <div class="actions">
+      <a class="btn" href="/">Back to the brief</a>
+      <a class="btn-ghost" href="/acquire/">Acquire the domain</a>
     </div>
   </main>
-</BaseLayout>
+</Base>

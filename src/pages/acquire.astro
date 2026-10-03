@@ -1,0 +1,45 @@
+---
+import Base from "../layouts/BaseLayout.astro";
+import { SITE, mailto } from "../config/site";
+const title = SITE.title;
+const description = `Acquire electricalagriculture.com at ${SITE.priceFormatted}. One exact-match .com. Buy now, make an offer, or write ${SITE.email}. Escrow on every transfer.`;
+---
+<Base title={title} description={description} path="/acquire/">
+  <main class="wrap section acquire">
+    <div>
+      <p class="kicker">Domain for sale</p>
+      <h1 class="display" style="overflow-wrap:anywhere">electricalagriculture.com</h1>
+      <p class="lede">The plain-language name for food made from electricity. Listed at <strong style="color:var(--fg)">{SITE.priceFormatted}</strong>.</p>
+      <div class="cards" style="margin-top:1.2rem">
+        <div class="card"><p class="muted">Extension</p><strong>.com</strong></div>
+        <div class="card"><p class="muted">Availability</p><strong>One name, in stock</strong></div>
+        <div class="card"><p class="muted">Transfer</p><strong>Independent escrow</strong></div>
+        <div class="card"><p class="muted">Payment here</p><strong>None</strong></div>
+      </div>
+      <ul class="muted">
+        <li>Close through Escrow.com or an equivalent both sides accept.</li>
+        <li>The site is HTTPS. The inquiry never asks for a card number.</li>
+        <li>Read the <a href="/science/">science</a> before you price the category.</li>
+      </ul>
+      <div class="actions">
+        <a class="btn" href={mailto("buy")}>Buy now</a>
+        <a class="btn-ghost" href={mailto("contact")}>Contact {SITE.email}</a>
+      </div>
+    </div>
+    <form class="card stack" id="inquiry">
+      <h2 style="font-size:2rem">Start a transfer</h2>
+      <p class="muted">Buy at the list price, or send a number. Nothing is stored on a server.</p>
+      <div class="actions">
+        <button class="btn-ghost" type="button" data-intent="buy" aria-pressed="false">Buy at {SITE.priceFormatted}</button>
+        <button class="btn" type="button" data-intent="offer" aria-pressed="true">Make an offer</button>
+      </div>
+      <label class="field">Name<input name="name" required autocomplete="name" /></label>
+      <label class="field">Email<input name="email" type="email" required autocomplete="email" /></label>
+      <label class="field" data-offer-field>Offer (USD)<input name="offer" inputmode="decimal" placeholder="33000" /></label>
+      <label class="field">Intended use<textarea name="use" rows="4"></textarea></label>
+      <p class="err" role="alert"></p>
+      <button class="btn" type="submit">Email this offer</button>
+      <p class="muted hidden" id="sent">If your mail app did not open, <a href="#">use this link</a>.</p>
+    </form>
+  </main>
+</Base>

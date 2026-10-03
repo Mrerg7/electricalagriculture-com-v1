@@ -1,0 +1,30 @@
+---
+import Base from "../layouts/BaseLayout.astro";
+import { faqs } from "../data/brief";
+const title = "FAQ | Electrical Agriculture";
+const description = "What electro-agriculture is, why it is not vertical farming, and how to acquire electricalagriculture.com.";
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: { "@type": "Answer", text: item.a },
+  })),
+};
+---
+<Base title={title} description={description} path="/faq/" jsonLd={faqLd}>
+  <main class="wrap section" style="max-width:46rem">
+    <p class="kicker">FAQ</p>
+    <h1 class="display">Short answers.</h1>
+    <div style="margin-top:1.5rem;border-top:1px solid var(--line)">
+      {faqs.map((item) => (
+        <details style="border-bottom:1px solid var(--line);padding:0.8rem 0">
+          <summary style="min-height:3rem;display:flex;align-items:center;cursor:pointer;font-weight:650">{item.q}</summary>
+          <p class="muted">{item.a}</p>
+        </details>
+      ))}
+    </div>
+    <p><a href="/acquire/">Acquire the domain</a></p>
+  </main>
+</Base>

@@ -1,0 +1,32 @@
+---
+import Base from "../layouts/BaseLayout.astro";
+import { makers } from "../data/brief";
+const title = "Makers | Electrical Agriculture";
+const description = "Solar Foods, Nolux, the Acetate Consortium, Savor, Calysta, Unibio, and the gas-fermentation cohort turning electricity and gases into food.";
+const filters = ["All", "Hydrogen", "Acetate", "Methane", "Fats", "Cells"];
+---
+<Base title={title} description={description} path="/makers/">
+  <main class="wrap section">
+    <p class="kicker">Makers</p>
+    <h1 class="display">The field, named.</h1>
+    <p class="lede">{description}</p>
+    <div style="display:flex;flex-wrap:wrap;gap:0.8rem;align-items:center;justify-content:space-between;margin-top:1.5rem">
+      <div class="filters" data-filters="#maker-list">
+        {filters.map((item) => (
+          <button class="btn-ghost" type="button" data-filter={item} aria-pressed={item === "All" ? "true" : "false"}>{item}</button>
+        ))}
+      </div>
+      <input class="search" data-search="#maker-list" type="search" placeholder="Search name or place" aria-label="Search makers" />
+    </div>
+    <div id="maker-list" class="stack" style="margin-top:1.2rem">
+      {makers.map((maker) => (
+        <article class="card" data-pathway={maker.pathway} data-hay={`${maker.name} ${maker.place} ${maker.summary}`}>
+          <div class="row"><h2 style="font-size:1.8rem">{maker.name}</h2><span class="kicker">{maker.pathway}</span></div>
+          <p class="muted">{maker.place} · {maker.status}</p>
+          <p>{maker.summary}</p>
+        </article>
+      ))}
+    </div>
+    <p class="muted">Status lines follow New Scientist, 22 September 2026. <a href="/notes/solein-leaves-the-lab/">Solein leaves the lab</a> is the hydrogen chapter. <a href="/acquire/">The domain</a> is separate from every company here.</p>
+  </main>
+</Base>

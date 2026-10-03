@@ -1,0 +1,73 @@
+---
+import Base from "../layouts/BaseLayout.astro";
+import { SITE } from "../config/site";
+import { captureCompare, foodMultiples, pathways } from "../data/brief";
+const title = "How electricity becomes food | Electrical Agriculture";
+const description = "From a solar panel to acetate or hydrogen, then to yeast, algae, or Solein. The electro-agriculture path, with the limits New Scientist actually reported.";
+const steps = [
+  ["01", "Catch the sun as current", "A field keeps under one percent of incident sunlight as food. A commercial panel keeps more than twenty percent as electricity."],
+  ["02", "Make a molecule a cell can eat", "Electrolysis of water makes hydrogen. Electrolysis of CO₂ makes acetate. Acetate dissolves. Hydrogen barely does."],
+  ["03", "Grow the eater in a tank", "Yeast, algae, or bacteria turn that molecule into protein or fat. Modified plants, via Nolux, may do it without a lamp."],
+  ["04", "Leave the acre where it is", "Renewable power takes calories off the ledger of land clearing. Fossil power only moves the smoke indoors."],
+];
+---
+<Base title={title} description={description} path="/science/">
+  <main class="wrap section">
+    <p class="kicker">Science</p>
+    <h1 class="display">How electricity becomes food.</h1>
+    <p class="lede">{description}</p>
+    <div class="steps" style="margin-top:2rem">
+      {steps.map(([n, h, b]) => (
+        <article>
+          <p class="kicker">{n}</p>
+          <h2 style="font-size:1.45rem;margin-top:0.6rem">{h}</h2>
+          <p class="muted">{b}</p>
+        </article>
+      ))}
+    </div>
+    <div class="split" style="margin-top:2rem">
+      <figure>
+        <img src="/photos/cell.jpg" width="1600" height="1200" alt="Bubbles rising from an electrode in a laboratory cell" style="border-radius:1.25rem;aspect-ratio:4/3;object-fit:cover;width:100%" />
+        <figcaption class="caption">Figure 01 · Acetate from CO₂ electrolysis is soluble. Hydrogen is not.</figcaption>
+      </figure>
+      <div>
+        <h2 style="font-size:2rem">What the sun is actually for</h2>
+        <div class="bars">
+          {captureCompare.map((row) => (
+            <div>
+              <div class="row"><strong>{row.name}</strong><span>{row.value}%</span></div>
+              <div class="barline"><span style={`width:${Math.min(100, row.value * 2.2)}%`}></span></div>
+              <p class="caption">{row.note}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+    <figure class="figure" style="margin-top:1.5rem">
+      <p class="kicker">Figure 02</p>
+      <h2 style="font-size:1.7rem">Relative to a field</h2>
+      <div class="bars">
+        {foodMultiples.map((row) => (
+          <div>
+            <div class="row"><span>{row.name}</span><span>{row.multiple}×</span></div>
+            <div class="barline"><span style={`width:${(row.multiple / 18) * 100}%`}></span></div>
+          </div>
+        ))}
+      </div>
+    </figure>
+    <div class="cards" style="margin-top:1.5rem">
+      {pathways.map((path) => (
+        <article class="card">
+          <p class="kicker">{path.id}</p>
+          <h3>{path.title}</h3>
+          <p class="muted">{path.lede}</p>
+        </article>
+      ))}
+    </div>
+    <p class="muted" style="margin-top:1.5rem">
+      Source: {SITE.sourceAuthor}, {SITE.sourcePublisher}, {SITE.sourceDate}.
+      <a href={SITE.sourceUrl}>Read the original</a>.
+      Then <a href="/makers/">who is building it</a>.
+    </p>
+  </main>
+</Base>

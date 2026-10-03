@@ -1,0 +1,35 @@
+---
+import Base from "../../layouts/BaseLayout.astro";
+import { SITE } from "../../config/site";
+import { notes } from "../../data/brief";
+
+export function getStaticPaths() {
+  return notes.map((note) => ({ params: { slug: note.slug }, props: { note } }));
+}
+
+const { note } = Astro.props;
+const title = `${note.title} | Electrical Agriculture`;
+const article = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: note.title,
+  description: note.dek,
+  datePublished: "2026-09-22",
+  dateModified: SITE.asOfISO,
+  author: { "@type": "Organization", name: SITE.brand },
+  mainEntityOfPage: `${SITE.url}/notes/${note.slug}/`,
+  citation: SITE.sourceUrl,
+};
+---
+<Base title={title} description={note.dek} path={`/notes/${note.slug}/`} jsonLd={article}>
+  <article class="wrap section prose">
+    <p class="kicker">{note.kicker}</p>
+    <h1 class="display" style="font-size:clamp(2.4rem,5vw,3.6rem)">{note.title}</h1>
+    <p class="lede">{note.dek}</p>
+    <p class="caption">{note.date} · {note.minutes} minute read · after {SITE.sourceAuthor}</p>
+    {note.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+    <p class="muted">
+      Primary source: <a href={SITE.sourceUrl}>{SITE.sourceTitle}</a>, {SITE.sourcePublisher}. Commentary, not a reprint.
+    </p>
+  </article>
+</Base>
