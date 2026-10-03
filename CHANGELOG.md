@@ -4,7 +4,7 @@
 
 [FEAT]: Optimization improvements - 2026-10-03
 
-- Rebuilt the site around electro-agriculture: electricity into food, not electric tractors.
+- Corrected the electro-agriculture brief against the 22 September 2026 article: 2022 yeast, mushroom, and algae trials; 2024 dark-building prototype (acetate to the roots); protein, not carbohydrates, as the expected shortage; plants cannot simply be fed acetate.
 - Field briefing sourced to New Scientist (Michael Le Page, 22 September 2026): acetate, hydrogen, Solein, land, and fats.
 - Pages: science, filterable makers, notes, FAQ, acquisition.
 - SEO: title pattern, meta descriptions, canonicals, JSON-LD Product/FAQ/Article, sitemap, robots.

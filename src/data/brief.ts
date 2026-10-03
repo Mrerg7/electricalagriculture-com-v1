@@ -29,7 +29,7 @@ export const pathways: { id: Pathway; title: string; lede: string }[] = [
   {
     id: "Acetate",
     title: "Acetate, then anything that eats it",
-    lede: "Electrolyze CO₂ into acetate, a molecule that dissolves easily in water. Yeast, algae, or genetically tuned plants grow on it in the dark.",
+    lede: "In 2022 a Riverside team made acetate from CO₂ and grew yeast, mushrooms, and algae on it. The prototype feeds that same molecule to plant roots, in the dark, under a roof of panels.",
   },
   {
     id: "Methane",
@@ -71,7 +71,7 @@ export const makers: Maker[] = [
     pathway: "Acetate",
     status: "Spin-out",
     summary:
-      "Robert Jinkerson’s group showed a sunlight → acetate → yeast path almost 18 times as efficient as ordinary farming, and nearly four times for algae. With further work, plant production itself might rise about tenfold. Nolux is the spin-out developing plants that can live on acetate.",
+      "In 2022 a team including Robert Jinkerson made acetate from CO₂ by electrolysis and grew yeast, mushrooms, and algae on it. Sunlight to acetate to yeast was almost 18 times ordinary farming; algae, nearly four. A 2024 paper estimated plant production could rise about tenfold if crops grow in the dark and take acetate through their roots. Plants cannot simply be fed acetate — using it efficiently still has to be engineered. Nolux is the Riverside spin-out on that problem.",
   },
   {
     name: "Savor",
@@ -141,8 +141,9 @@ export const notes: Note[] = [
     minutes: 6,
     paragraphs: [
       "A crop is a poor solar panel. Plants typically keep less than one percent of the sunlight that falls on them and turn it into something we can eat. A standard panel keeps more than 20 percent as electricity. Experimental panels, New Scientist notes, have more than doubled even that.",
-      "The interesting step is what you do with the current. Researchers including Robert Jinkerson at the University of California, Riverside, used electricity to turn CO₂ into acetate, then fed that acetate to yeast. Counted as sunlight-to-food, the route was almost 18 times as efficient as ordinary farming. The same idea with algae landed near four times. With more work on the plants themselves, production efficiency might rise about tenfold.",
-      "That is not a promise that a bakery opens next year on a substation. It is a measurement of waste. Photosynthesis spends most of the sun on staying alive, on leaves you do not eat, on seasons, on drought. A tank does not do those things.",
+      "The interesting step is what you do with the current. In 2022, a team including Robert Jinkerson at the University of California, Riverside, made acetate from CO₂ by electrolysis and fed it to yeast, mushrooms, and algae. Counted as sunlight-to-food, the yeast route was almost 18 times as efficient as ordinary farming. Algae landed near four times. New Scientist calls those gigantic leaps.",
+      "A 2024 follow-up by Jinkerson and colleagues sketches the building, not just the microbe. Panels cover the roof. Electricity makes acetate on site. The acetate is supplied to the roots of crops growing in the dark below. With further work they estimate plant production could rise about tenfold — on the order of ten times the food per area of land, with the surplus free for rewilding. Closed rooms also sidestep a lot of weather shock, pests, and disease.",
+      "It is not simple, and the piece says so. Plants cannot simply be fed acetate. Using it efficiently still has to be engineered. That is not a promise that a bakery opens next year on a substation. It is a measurement of waste. Photosynthesis spends most of the sun on staying alive, on leaves you do not eat, on seasons, on drought.",
       "Vertical farms are the cautionary cousin. They still grow plants, they just replace the sun with lamps, and the reporting puts the land bill near 13 hectares of panels for every hectare of growing room. Electro-agriculture, if it works, refuses that trade. You do not light a lettuce. You feed a microbe a molecule the panel helped you make.",
       "Nolux, the Riverside spin-out, is trying the harder version: plants altered so they can grow on acetate without sunlight. If that holds, the crop does not disappear. The field might.",
     ],
@@ -159,7 +160,7 @@ export const notes: Note[] = [
       "Co-founder Pasi Vainikka told New Scientist: “It has scaled really well. It’s almost five times more productive than we thought early on.” The company’s aim is a plant around 6,400 tonnes a year, made for a few dollars a kilogram and sold for more than twice that.",
       "A few thousand tonnes is a speck next to the world’s protein. It is also no longer a rendering. The machine exists. It met a number. The number was better than the one in the model.",
       "Hydrogen is an awkward lunch. Remko Boom at the University of Copenhagen put it plainly: hydrogen hardly dissolves in water, so microbes struggle to catch it. Acetate, made by electrolyzing CO₂, does dissolve. That is why several groups now treat acetate as the better spoon, even while Solar Foods proves the hydrogen route can run.",
-      "Neither route is a diet. Solein is an ingredient — flour-adjacent, not a harvest festival. The product question is whether bakers, feed mills, and food companies will put a quiet powder in the recipe if the powder is cheap and the land stays a forest.",
+      "Neither route is a diet. The reporting is plain about that: a lot of progress has already been made on microbial foods, and the open question is whether people will eat them. Even if they do, they will not want to live on microbes alone. The shortage the field expects is protein, not carbohydrates. Solein is an ingredient — a powder, not a harvest festival.",
     ],
   },
   {
@@ -172,7 +173,7 @@ export const notes: Note[] = [
     paragraphs: [
       "Farming is not a side issue in the climate ledger. Food production accounts for more than a third of global emissions, and it is the main reason wild land becomes fields. Farm more gently and each hectare yields less, so the frontier moves. The population is still growing. As people get richer they eat more meat, which eats more grain, which eats more ground.",
       "Heat is already charging rent. New Scientist cites crop losses from climate change above $20 billion a year, and notes that wheat yields would be higher without that damage. Europe’s harvest this year was a reminder, not a preview of the worst case.",
-      "Electro-agriculture is a way to stop asking the landscape for every calorie. A compact plant on a grid can, in principle, sit on poor soil, in a desert, beside a wind farm, and ignore a bad season. Pests and weather do not book time in a sterile tank.",
+      "Electro-agriculture is a way to stop asking the landscape for every calorie. The 2024 sketch is a building wearing solar panels, with crops in the dark underneath taking acetate through their roots. If the tenfold gain holds, that is about ten times the food per area of land, and the difference can go back to wild ground. Closed systems also largely avoid the pest and disease losses that cut yields in open fields. A bad season does not book the room.",
       "The limit is the one the magazine does not soften. Nobody expects food from air and electricity to replace crops and livestock soon, because it would demand more renewable electricity than the world currently generates. If the power is fossil, you have built an expensive way to burn gas into protein.",
       "Boom’s line is the adult one: “We will probably not rely on one particular route.” Some calories stay in fields because people like standing in them, and because soil still does things a reactor does not. Some calories move, and the forest keeps the difference.",
       `This briefing follows reporting by ${site.sourceAuthor} in ${site.sourcePublisher}, ${site.sourceDate}. It is not a forecast, and this site is not affiliated with the scientists or companies named.`,
@@ -198,7 +199,7 @@ export const notes: Note[] = [
 export const faqs = [
   {
     q: "What is electrical agriculture?",
-    a: "Growing food on electricity instead of sunlight. Renewable power makes hydrogen or acetate from water and CO₂. Microbes, and in some labs modified plants, turn those chemicals into protein, fat, or biomass — without a field.",
+    a: "Two related ideas. One is microbial food: renewable power makes hydrogen or acetate, and a tank of microbes turns it into protein. The other, electro-agriculture proper, grows plants on acetate instead of sunlight — panels on the roof, crops in the dark, acetate to the roots. New Scientist expects a protein shortage, not a carbohydrate one, and says people will not want to live on microbes alone.",
   },
   {
     q: "Is electricalagriculture.com for sale?",
@@ -210,7 +211,7 @@ export const faqs = [
   },
   {
     q: "How is this different from vertical farming?",
-    a: "Vertical farms still grow plants under lamps. The reporting estimates about 13 hectares of solar panels for each hectare of growing area. Electro-agriculture skips photosynthesis: the panel’s electricity becomes a molecule, and a microbe eats the molecule.",
+    a: "Vertical farms still grow plants under lamps. The reporting estimates about 13 hectares of solar panels for each hectare of growing area. The electro-agriculture prototype does not light the crop. A 2022 Riverside experiment made acetate from CO₂ and fed yeast, mushrooms, and algae. The 2024 sketch sends that acetate to roots in a dark room under the panels.",
   },
   {
     q: "Where do the figures on this site come from?",
